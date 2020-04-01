@@ -301,14 +301,49 @@
           
             <p>想至千里，想成江河！</p>
 <h2 id="工作"><a href="#工作" class="headerlink" title="工作"></a>工作</h2><p>温习了一遍MERGE INTO 的语法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">	MERGE INTO TAB1 A</span><br><span class="line">	USING TAB2 B</span><br><span class="line">	ON A.ID &#x3D; B.ID </span><br><span class="line">	WHEN MATCHED THEN</span><br><span class="line">		UPDATE SET A.ID&#x3D;B.ID,A.XX&#x3D;B.XX</span><br><span class="line">	WHEN NOT MATCHED THEN</span><br><span class="line">		INSERT (ID,XX) VALUES(B.ID,B.XX);</span><br><span class="line">&#96;&#96;&#96; </span><br><span class="line"></span><br><span class="line">## 自学</span><br><span class="line"></span><br><span class="line">### Shell学习</span><br><span class="line">##### while循环</span><br><span class="line">&gt; 语法结构</span><br><span class="line">&gt; while 表达式</span><br><span class="line">&gt; do</span><br><span class="line">&gt; ...</span><br><span class="line">&gt; done</span><br><span class="line"></span><br><span class="line">###### 案例：</span><br><span class="line">脚本同步系统时间，要求：1.每30s同步一次时间；2.同步失败发送邮件；3.同步成功100次发送邮件</span><br><span class="line"></span><br><span class="line">运行脚本时ctrl+c中断，kill进程方法:</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96; bash</span><br><span class="line">$ jobs</span><br><span class="line">$ kill -9 %1</span><br><span class="line">&#96;&#96;&#96;	</span><br><span class="line"></span><br><span class="line">同步系统时间：</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96; bash</span><br><span class="line">$ &#x2F;etc&#x2F;init.d&#x2F;xinetd stop</span><br><span class="line">$ &#x2F;etc&#x2F;init.d&#x2F;xinetd start</span><br><span class="line">$ etstat -nltup|grep 37</span><br><span class="line">$ rdate xxx.xxx.xxx.xxx</span><br></pre></td></tr></table></figure>
-
+<pre><code>MERGE INTO TAB1 A
+USING TAB2 B
+ON A.ID = B.ID 
+WHEN MATCHED THEN
+    UPDATE SET A.ID=B.ID,A.XX=B.XX
+WHEN NOT MATCHED THEN
+    INSERT (ID,XX) VALUES(B.ID,B.XX);</code></pre><h2 id="自学"><a href="#自学" class="headerlink" title="自学"></a>自学</h2><h3 id="Shell学习"><a href="#Shell学习" class="headerlink" title="Shell学习"></a>Shell学习</h3><h5 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h5><blockquote>
+<p>语法结构<br>while 表达式<br>do<br>…<br>done</p>
+</blockquote>
+<h6 id="案例："><a href="#案例：" class="headerlink" title="案例："></a>案例：</h6><p>脚本同步系统时间，要求：1.每30s同步一次时间；2.同步失败发送邮件；3.同步成功100次发送邮件</p>
+<p>运行脚本时ctrl+c中断，kill进程方法:</p>
+<pre><code class="bash">$ <span class="built_in">jobs</span>
+$ <span class="built_in">kill</span> -9 %1</code></pre>
+<p>同步系统时间：</p>
+<pre><code class="bash">$ /etc/init.d/xinetd stop
+$ /etc/init.d/xinetd start
+$ etstat -nltup|grep 37
+$ rdate xxx.xxx.xxx.xxx</code></pre>
 <p>或者</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ntp xxx.xxx.xxx.xxx</span><br></pre></td></tr></table></figure>
-
+<pre><code class="bash">$ ntp xxx.xxx.xxx.xxx</code></pre>
 <p>代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">	#!&#x2F;bin&#x2F;env bash</span><br><span class="line">	ntp&#x3D;10.1.1.2</span><br><span class="line">	vcn&#x3D;0</span><br><span class="line">	while true</span><br><span class="line">	do</span><br><span class="line">	ntp ntp &amp;&gt;&#x2F;dev&#x2F;null</span><br><span class="line">	  if[ $? -ne 0 ];then</span><br><span class="line">	    echo &quot;system ntp date failed&quot;|mail -s &quot;check system date&quot; root@localhost</span><br><span class="line">	  esle</span><br><span class="line">		let vnc++</span><br><span class="line">		if[ vnc -eq 100 ];then</span><br><span class="line">		  echo &quot;system ntp date succeed&quot;|mail -s &quot;check system date&quot; root@localhost &amp;&amp; vcn&#x3D;0</span><br><span class="line">		fi</span><br><span class="line">	  fi</span><br><span class="line">	sleep 30 </span><br><span class="line">	done</span><br><span class="line">&#96;&#96;&#96;	</span><br><span class="line"></span><br><span class="line">##### until循环</span><br><span class="line">&gt; 语法结构</span><br><span class="line">&gt; until 表达式</span><br><span class="line">&gt; do</span><br><span class="line">&gt; ...</span><br><span class="line">&gt; done</span><br><span class="line">###### 案例</span><br><span class="line">批量创建10个用户，要求：1.stu1-stu5的用户UID分别为1001-1005，stu6-stu10用户的家目录分别在&#x2F;rhome&#x2F;stu6-&#x2F;rhome&#x2F;stu10</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96; bash</span><br><span class="line">$ useradd -u username 指定UID </span><br><span class="line">$ useradd -d username 指定目录</span><br><span class="line">$ passwd 123456 --stdin username  设置密码</span><br></pre></td></tr></table></figure>
-
+<pre><code>#!/bin/env bash
+ntp=10.1.1.2
+vcn=0
+while true
+do
+ntp ntp &amp;&gt;/dev/null
+  if[ $? -ne 0 ];then
+    echo &quot;system ntp date failed&quot;|mail -s &quot;check system date&quot; root@localhost
+  esle
+    let vnc++
+    if[ vnc -eq 100 ];then
+      echo &quot;system ntp date succeed&quot;|mail -s &quot;check system date&quot; root@localhost &amp;&amp; vcn=0
+    fi
+  fi
+sleep 30 
+done</code></pre><h5 id="until循环"><a href="#until循环" class="headerlink" title="until循环"></a>until循环</h5><blockquote>
+<p>语法结构<br>until 表达式<br>do<br>…<br>done</p>
+</blockquote>
+<h6 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h6><p>批量创建10个用户，要求：1.stu1-stu5的用户UID分别为1001-1005，stu6-stu10用户的家目录分别在/rhome/stu6-/rhome/stu10</p>
+<pre><code class="bash">$ useradd -u username 指定UID 
+$ useradd -d username 指定目录
+$ passwd 123456 --stdin username  设置密码</code></pre>
 <p>代码如下：</p>
 <pre><code>#!/bin/bash
 [ -d /rhome ]|| mkdir /rhome
