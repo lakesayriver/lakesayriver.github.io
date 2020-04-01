@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="lakesayriver">
 <meta property="og:description" content="想至千里，想成江河！ 工作温习了一遍MERGE INTO 的语法：    MERGE INTO TAB1 A    USING TAB2 B    ON A.ID &#x3D; B.ID    WHEN MATCHED THEN        UPDATE SET A.ID&#x3D;B.ID,A.XX&#x3D;B.XX    WHEN NOT MATCHED THEN        INSERT (ID,XX) VALUE">
 <meta property="article:published_time" content="2020-04-01T12:15:46.471Z">
-<meta property="article:modified_time" content="2020-04-01T13:43:29.289Z">
+<meta property="article:modified_time" content="2020-04-01T13:46:45.921Z">
 <meta property="article:author" content="lakesayriver">
 <meta name="twitter:card" content="summary">
 
@@ -308,15 +308,22 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">jobs</span></span><br><span class="line">$ <span class="built_in">kill</span> -9 %1</span><br><span class="line">```	</span><br><span class="line">同步系统时间：</span><br><span class="line">``` bash</span><br><span class="line">$ /etc/init.d/xinetd stop</span><br><span class="line">$ /etc/init.d/xinetd start</span><br><span class="line">$ etstat -nltup|grep 37</span><br><span class="line">$ rdate xxx.xxx.xxx.xxx</span><br></pre></td></tr></table></figure>
 <p>或者</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ntp xxx.xxx.xxx.xxx</span><br></pre></td></tr></table></figure>
-<p>代码如下：<br>    #!/bin/env bash<br>    ntp=10.1.1.2<br>    vcn=0<br>    while true<br>    do<br>    ntp ntp &amp;&gt;/dev/null<br>      if[ $? -ne 0 ];then<br>        echo “system ntp date failed”|mail -s “check system date” root@localhost<br>      esle<br>        let vnc++<br>        if[ vnc -eq 100 ];then<br>          echo “system ntp date succeed”|mail -s “check system date” root@localhost &amp;&amp; vcn=0<br>        fi<br>      fi<br>    sleep 30<br>    done</p>
-<h5 id="until循环"><a href="#until循环" class="headerlink" title="until循环"></a>until循环</h5><blockquote>
-<p>语法结构<br>until 表达式<br>do<br>…<br>done</p>
-</blockquote>
-<h6 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h6><p>批量创建10个用户，要求：1.stu1-stu5的用户UID分别为1001-1005，stu6-stu10用户的家目录分别在/rhome/stu6-/rhome/stu10</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ useradd -u username 指定UID </span><br><span class="line">$ useradd -d username 指定目录</span><br><span class="line">$ passwd 123456 --stdin username  设置密码</span><br></pre></td></tr></table></figure>
+<p>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">	#!&#x2F;bin&#x2F;env bash</span><br><span class="line">	ntp&#x3D;10.1.1.2</span><br><span class="line">	vcn&#x3D;0</span><br><span class="line">	while true</span><br><span class="line">	do</span><br><span class="line">	ntp ntp &amp;&gt;&#x2F;dev&#x2F;null</span><br><span class="line">	  if[ $? -ne 0 ];then</span><br><span class="line">	    echo &quot;system ntp date failed&quot;|mail -s &quot;check system date&quot; root@localhost</span><br><span class="line">	  esle</span><br><span class="line">		let vnc++</span><br><span class="line">		if[ vnc -eq 100 ];then</span><br><span class="line">		  echo &quot;system ntp date succeed&quot;|mail -s &quot;check system date&quot; root@localhost &amp;&amp; vcn&#x3D;0</span><br><span class="line">		fi</span><br><span class="line">	  fi</span><br><span class="line">	sleep 30 </span><br><span class="line">	done</span><br><span class="line">&#96;&#96;&#96;	</span><br><span class="line">##### until循环</span><br><span class="line">&gt; 语法结构</span><br><span class="line">&gt; until 表达式</span><br><span class="line">&gt; do</span><br><span class="line">&gt; ...</span><br><span class="line">&gt; done</span><br><span class="line">###### 案例</span><br><span class="line">批量创建10个用户，要求：1.stu1-stu5的用户UID分别为1001-1005，stu6-stu10用户的家目录分别在&#x2F;rhome&#x2F;stu6-&#x2F;rhome&#x2F;stu10</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96; bash</span><br><span class="line">$ useradd -u username 指定UID </span><br><span class="line">$ useradd -d username 指定目录</span><br><span class="line">$ passwd 123456 --stdin username  设置密码</span><br></pre></td></tr></table></figure>
 
-<p>代码如下：<br>    #!/bin/bash<br>    [ -d /rhome ]|| mkdir /rhome<br>    i=1<br>    until [ i -gt 10 ]<br>    do<br>      if [ i -le 5 ];then<br>        useradd -u $[1000+i] stu$i<br>        echo 123456|passwd –stdin stu$i<br>      else<br>        useradd -d /rhome/stu$i stu$i<br>      let i++<br>    done</p>
-
+<p>代码如下：</p>
+<pre><code>#!/bin/bash
+[ -d /rhome ]|| mkdir /rhome
+i=1
+until [ i -gt 10 ]
+do
+  if [ i -le 5 ];then
+    useradd -u $[1000+i] stu$i
+    echo 123456|passwd --stdin stu$i
+  else
+    useradd -d /rhome/stu$i stu$i
+  let i++
+done</code></pre>
       
     </div>
     
@@ -462,7 +469,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#工作"><span class="nav-number">1.</span> <span class="nav-text">工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自学"><span class="nav-number">2.</span> <span class="nav-text">自学</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Shell学习"><span class="nav-number">2.1.</span> <span class="nav-text">Shell学习</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#while循环"><span class="nav-number">2.1.0.1.</span> <span class="nav-text">while循环</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#案例："><span class="nav-number">2.1.0.1.1.</span> <span class="nav-text">案例：</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#until循环"><span class="nav-number">2.1.0.2.</span> <span class="nav-text">until循环</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#案例"><span class="nav-number">2.1.0.2.1.</span> <span class="nav-text">案例</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#工作"><span class="nav-number">1.</span> <span class="nav-text">工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自学"><span class="nav-number">2.</span> <span class="nav-text">自学</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Shell学习"><span class="nav-number">2.1.</span> <span class="nav-text">Shell学习</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#while循环"><span class="nav-number">2.1.0.1.</span> <span class="nav-text">while循环</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#案例："><span class="nav-number">2.1.0.1.1.</span> <span class="nav-text">案例：</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
