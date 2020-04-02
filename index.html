@@ -300,9 +300,17 @@
         
           
             <p>想至千里，想成江河！</p>
-<h2 id="工作"><a href="#工作" class="headerlink" title="工作"></a>工作</h2><p>改变会话的NLS_DATE_FORMAT</p>
-<pre><code>alter session set nls_date_format=&apos;yyyy-mm-dd hh24:mi:ss&apos;</code></pre><p>温习to_date的用法：</p>
-<pre><code>to_date(char,fmt,nlsparam)</code></pre><h2 id="自学"><a href="#自学" class="headerlink" title="自学"></a>自学</h2><p>今日身体不适，肩周炎+鼻炎，断更一天，复习下昨日内容吧</p>
+<h2 id="工作"><a href="#工作" class="headerlink" title="工作"></a>工作</h2><blockquote>
+<p>改变会话的NLS_DATE_FORMAT</p>
+</blockquote>
+<pre><code>alter session set nls_date_format=&apos;yyyy-mm-dd hh24:mi:ss&apos;</code></pre><blockquote>
+<p>温习to_date的用法：</p>
+</blockquote>
+<pre><code>to_date(char,fmt,nlsparam)</code></pre><blockquote>
+<p>回顾exists和in的区别</p>
+</blockquote>
+<p>```<br>select * from table1 A where exists( select 1 from table2 B where b.id = a.id)   适用于B表的数据量比A表大，<br>select * from table1 A where id in (select id from table2 B where …)        适用于B表的数据量比A表小</p>
+<h2 id="自学"><a href="#自学" class="headerlink" title="自学"></a>自学</h2><p>今日身体不适，肩周炎+鼻炎，断更一天，复习下昨日内容吧</p>
 
           
         
