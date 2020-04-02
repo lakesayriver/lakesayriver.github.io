@@ -79,14 +79,14 @@
 
 
 
-<meta name="description" content="想至千里，想成江河！ 工作 改变会话的NLS_DATE_FORMAT  alter session set nls_date_format&#x3D;&amp;apos;yyyy-mm-dd hh24:mi:ss&amp;apos; 温习to_date的用法：  to_date(char,fmt,nlsparam) 回顾exists和in的区别  &#96;&#96;&#96;select * from table1 A where exists">
+<meta name="description" content="想至千里，想成江河！ 工作 改变会话的NLS_DATE_FORMAT  alter session set nls_date_format&#x3D;&amp;apos;yyyy-mm-dd hh24:mi:ss&amp;apos; 温习to_date的用法：  to_date(char,fmt,nlsparam) 回顾exists和in的区别  select * from table1 A where exists( s">
 <meta property="og:type" content="article">
 <meta property="og:title" content="今日学习内容">
 <meta property="og:url" content="http://yoursite.com/2020/04/02/0402/index.html">
 <meta property="og:site_name" content="lakesayriver">
-<meta property="og:description" content="想至千里，想成江河！ 工作 改变会话的NLS_DATE_FORMAT  alter session set nls_date_format&#x3D;&amp;apos;yyyy-mm-dd hh24:mi:ss&amp;apos; 温习to_date的用法：  to_date(char,fmt,nlsparam) 回顾exists和in的区别  &#96;&#96;&#96;select * from table1 A where exists">
+<meta property="og:description" content="想至千里，想成江河！ 工作 改变会话的NLS_DATE_FORMAT  alter session set nls_date_format&#x3D;&amp;apos;yyyy-mm-dd hh24:mi:ss&amp;apos; 温习to_date的用法：  to_date(char,fmt,nlsparam) 回顾exists和in的区别  select * from table1 A where exists( s">
 <meta property="article:published_time" content="2020-04-02T07:39:38.245Z">
-<meta property="article:modified_time" content="2020-04-02T12:17:50.260Z">
+<meta property="article:modified_time" content="2020-04-02T12:19:21.315Z">
 <meta property="article:author" content="lakesayriver">
 <meta name="twitter:card" content="summary">
 
@@ -308,8 +308,8 @@
 <pre><code>to_date(char,fmt,nlsparam)</code></pre><blockquote>
 <p>回顾exists和in的区别</p>
 </blockquote>
-<p>```<br>select * from table1 A where exists( select 1 from table2 B where b.id = a.id)   适用于B表的数据量比A表大，<br>select * from table1 A where id in (select id from table2 B where …)        适用于B表的数据量比A表小</p>
-<h2 id="自学"><a href="#自学" class="headerlink" title="自学"></a>自学</h2><p>今日身体不适，肩周炎+鼻炎，断更一天，复习下昨日内容吧</p>
+<pre><code>select * from table1 A where exists( select 1 from table2 B where b.id = a.id)   适用于B表的数据量比A表大，
+select * from table1 A where id in (select id from table2 B where ...)        适用于B表的数据量比A表小</code></pre><h2 id="自学"><a href="#自学" class="headerlink" title="自学"></a>自学</h2><p>今日身体不适，肩周炎+鼻炎，断更一天，复习下昨日内容吧</p>
 
       
     </div>
