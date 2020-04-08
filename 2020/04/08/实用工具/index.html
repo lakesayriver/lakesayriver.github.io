@@ -79,14 +79,14 @@
 
 
 
-<meta name="description" content="想至千里，想成江河！ 工作温习了一遍MERGE INTO 的语法：     MERGE INTO TAB1 A     USING TAB2 B     ON A.ID &#x3D; B.ID      WHEN MATCHED THEN         UPDATE SET A.ID&#x3D;B.ID,A.XX&#x3D;B.XX     WHEN NOT MATCHED THEN         INSERT (ID,X">
+<meta name="description" content="title: 工具网站记录categories: tool  图标网站https:&#x2F;&#x2F;www.easyicon.net&#x2F;http:&#x2F;&#x2F;www.bitbug.net&#x2F;https:&#x2F;&#x2F;www.iconfont.cn&#x2F;plus&#x2F;user&#x2F;detail?uid&#x3D;41718">
 <meta property="og:type" content="article">
-<meta property="og:title" content="今日学习内容">
-<meta property="og:url" content="http://yoursite.com/2020/04/01/0401/index.html">
+<meta property="og:title" content="实用工具">
+<meta property="og:url" content="http://yoursite.com/2020/04/08/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/index.html">
 <meta property="og:site_name" content="lakesayriver">
-<meta property="og:description" content="想至千里，想成江河！ 工作温习了一遍MERGE INTO 的语法：     MERGE INTO TAB1 A     USING TAB2 B     ON A.ID &#x3D; B.ID      WHEN MATCHED THEN         UPDATE SET A.ID&#x3D;B.ID,A.XX&#x3D;B.XX     WHEN NOT MATCHED THEN         INSERT (ID,X">
-<meta property="article:published_time" content="2020-04-01T12:15:46.471Z">
-<meta property="article:modified_time" content="2020-04-03T07:54:54.797Z">
+<meta property="og:description" content="title: 工具网站记录categories: tool  图标网站https:&#x2F;&#x2F;www.easyicon.net&#x2F;http:&#x2F;&#x2F;www.bitbug.net&#x2F;https:&#x2F;&#x2F;www.iconfont.cn&#x2F;plus&#x2F;user&#x2F;detail?uid&#x3D;41718">
+<meta property="article:published_time" content="2020-04-08T14:06:46.650Z">
+<meta property="article:modified_time" content="2020-04-08T14:10:18.883Z">
 <meta property="article:author" content="江">
 <meta name="twitter:card" content="summary">
 
@@ -118,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/04/01/0401/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/04/08/实用工具/"/>
 
 
 
 
 
-  <title>今日学习内容 | lakesayriver</title>
+  <title>实用工具 | lakesayriver</title>
   
 
 
@@ -264,7 +264,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/01/0401/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/08/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江">
@@ -281,7 +281,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">今日学习内容</h1>
+          <h1 class="post-title" itemprop="name headline">实用工具</h1>
         
 
         <div class="post-meta">
@@ -293,8 +293,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-01T20:15:46+08:00">
-                2020-04-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-08T22:06:46+08:00">
+                2020-04-08
               </time>
             
 
@@ -331,64 +331,11 @@
       
 
       
-        <p>想至千里，想成江河！</p>
-<h2 id="工作"><a href="#工作" class="headerlink" title="工作"></a>工作</h2><p>温习了一遍MERGE INTO 的语法：</p>
-<pre><code>    MERGE INTO TAB1 A
-    USING TAB2 B
-    ON A.ID = B.ID 
-    WHEN MATCHED THEN
-        UPDATE SET A.ID=B.ID,A.XX=B.XX
-    WHEN NOT MATCHED THEN
-        INSERT (ID,XX) VALUES(B.ID,B.XX);</code></pre><h2 id="自学"><a href="#自学" class="headerlink" title="自学"></a>自学</h2><h3 id="Shell学习"><a href="#Shell学习" class="headerlink" title="Shell学习"></a>Shell学习</h3><h5 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h5><blockquote>
-<p>语法结构<br>while 表达式<br>do<br>…<br>done</p>
-</blockquote>
-<h6 id="案例："><a href="#案例：" class="headerlink" title="案例："></a>案例：</h6><p>脚本同步系统时间，要求：1.每30s同步一次时间；2.同步失败发送邮件；3.同步成功100次发送邮件</p>
-<p>运行脚本时ctrl+c中断，kill进程方法:</p>
-<pre><code class="bash">$ jobs
-$ kill -9 %1</code></pre>
-<p>同步系统时间：</p>
-<pre><code class="bash">$ /etc/init.d/xinetd stop
-$ /etc/init.d/xinetd start
-$ etstat -nltup|grep 37
-$ rdate xxx.xxx.xxx.xxx</code></pre>
-<p>或者</p>
-<pre><code class="bash">$ ntp xxx.xxx.xxx.xxx</code></pre>
-<p>代码如下：</p>
-<pre><code>    #!/bin/env bash
-    ntp=10.1.1.2
-    vcn=0
-    while true
-    do
-    ntp ntp &amp;&gt;/dev/null
-      if[ $? -ne 0 ];then
-        echo &quot;system ntp date failed&quot;|mail -s &quot;check system date&quot; root@localhost
-      esle
-        let vnc++
-        if[ $vnc -eq 100 ];then
-          echo &quot;system ntp date succeed&quot;|mail -s &quot;check system date&quot; root@localhost &amp;&amp; vcn=0
-        fi
-      fi
-    sleep 30 
-    done</code></pre><h5 id="until循环"><a href="#until循环" class="headerlink" title="until循环"></a>until循环</h5><blockquote>
-<p>语法结构<br>until 表达式<br>do<br>…<br>done</p>
-</blockquote>
-<h6 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h6><p>批量创建10个用户，要求：1.stu1-stu5的用户UID分别为1001-1005，stu6-stu10用户的家目录分别在/rhome/stu6-/rhome/stu10</p>
-<pre><code class="bash">$ useradd -u username 指定UID 
-$ useradd -d username 指定目录
-$ passwd 123456 --stdin username  设置密码</code></pre>
-<p>代码如下：</p>
-<pre><code>    #!/bin/bash
-    [ -d /rhome ]|| mkdir /rhome
-    i=1
-    until [ i -gt 10 ]
-    do
-      if [ i -le 5 ];then
-        useradd -u $[1000+i] stu$i
-        echo 123456|passwd --stdin stu$i
-      else
-        useradd -d /rhome/stu$i stu$i
-      let i++
-    done</code></pre>
+        <hr>
+<p>title: 工具网站记录<br>categories: tool</p>
+<hr>
+<h3 id="图标网站"><a href="#图标网站" class="headerlink" title="图标网站"></a>图标网站</h3><p><a href="https://www.easyicon.net/" target="_blank" rel="noopener">https://www.easyicon.net/</a><br><a href="http://www.bitbug.net/" target="_blank" rel="noopener">http://www.bitbug.net/</a><br><a href="https://www.iconfont.cn/plus/user/detail?uid=41718" target="_blank" rel="noopener">https://www.iconfont.cn/plus/user/detail?uid=41718</a></p>
+
       
     </div>
     
@@ -422,7 +369,7 @@ $ passwd 123456 --stdin username  设置密码</code></pre>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/31/%E4%BB%8A%E6%97%A5%E8%AF%B4%E5%AD%A6/" rel="next" title="今日学习内容">
+              <a href="/2020/04/08/0408/" rel="next" title="今日学习内容">
                 <i class="fa fa-chevron-left"></i> 今日学习内容
               </a>
             
@@ -431,10 +378,6 @@ $ passwd 123456 --stdin username  设置密码</code></pre>
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/04/02/0402/" rel="prev" title="今日学习内容">
-                今日学习内容 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -561,7 +504,7 @@ $ passwd 123456 --stdin username  设置密码</code></pre>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#工作"><span class="nav-number">1.</span> <span class="nav-text">工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自学"><span class="nav-number">2.</span> <span class="nav-text">自学</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Shell学习"><span class="nav-number">2.1.</span> <span class="nav-text">Shell学习</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#while循环"><span class="nav-number">2.1.0.1.</span> <span class="nav-text">while循环</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#案例："><span class="nav-number">2.1.0.1.1.</span> <span class="nav-text">案例：</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#until循环"><span class="nav-number">2.1.0.2.</span> <span class="nav-text">until循环</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#案例"><span class="nav-number">2.1.0.2.1.</span> <span class="nav-text">案例</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#图标网站"><span class="nav-number">1.</span> <span class="nav-text">图标网站</span></a></li></ol></div>
             
 
           </div>
