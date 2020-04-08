@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/32x32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/16x16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="想至千里，想成江河！ 工作自学shift 参数移位语法：shift num  左移num位示例：  #!&#x2F;bin&#x2F;bash sum&#x3D;0 while [ $# -ne 0 ] do  let sum&#x3D;$sum+$1 shift  done echo $sumexpect 扩展程序，tcl语言，实现自动应答案例一：远程登录到服务器上，不操作  #!&#x2F;usr&#x2F;bin&#x2F;expect set ip [ li">
+<meta property="og:type" content="article">
+<meta property="og:title" content="今日学习内容">
+<meta property="og:url" content="http://yoursite.com/2020/04/08/0408/index.html">
+<meta property="og:site_name" content="lakesayriver">
+<meta property="og:description" content="想至千里，想成江河！ 工作自学shift 参数移位语法：shift num  左移num位示例：  #!&#x2F;bin&#x2F;bash sum&#x3D;0 while [ $# -ne 0 ] do  let sum&#x3D;$sum+$1 shift  done echo $sumexpect 扩展程序，tcl语言，实现自动应答案例一：远程登录到服务器上，不操作  #!&#x2F;usr&#x2F;bin&#x2F;expect set ip [ li">
+<meta property="article:published_time" content="2020-04-08T11:24:16.841Z">
+<meta property="article:modified_time" content="2020-04-08T02:26:57.258Z">
+<meta property="article:author" content="江">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/04/08/0408/"/>
+
+
+
+
+
+  <title>今日学习内容 | lakesayriver</title>
+  
+
+
+
+
+
+
+
+
+  
+  <!--鼠标点击效果
+  <script src="/js/src/fireworks.js" type="text/javascript"></script>-->
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">lakesayriver</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/08/0408/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lakesayriver">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">今日学习内容</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-08T19:24:16+08:00">
+                2020-04-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>想至千里，想成江河！</p>
+<h2 id="工作"><a href="#工作" class="headerlink" title="工作"></a>工作</h2><pre><code></code></pre><h2 id="自学"><a href="#自学" class="headerlink" title="自学"></a>自学</h2><h6 id="shift"><a href="#shift" class="headerlink" title="shift"></a>shift</h6><blockquote>
+<p>参数移位<br>语法：<br>shift num  左移num位<br>示例：</p>
+</blockquote>
+<pre><code>#!/bin/bash
+sum=0
+while [ $# -ne 0 ]
+do 
+let sum=$sum+$1
+shift 
+done
+echo $sum</code></pre><h6 id="expect"><a href="#expect" class="headerlink" title="expect"></a>expect</h6><blockquote>
+<p>扩展程序，tcl语言，实现自动应答<br>案例一：<br>远程登录到服务器上，不操作</p>
+</blockquote>
+<pre><code>#!/usr/bin/expect
+set ip [ lindex $argv 0 ]
+set pass [ lindex $argv 1 ]
+set timeout 5
+#开启一个程序
+spawn ssh root@10.1.1.1
+#捕获相关内容
+expect{
+    &quot;yes/no?&quot;:{send &quot;yes\r&quot;;exp_continue}
+    &quot;password&quot;:{send &quot;123456\r&quot;}
+}
+interact</code></pre><p>案例二：<br>远程登录到服务器上，并进行一些操作</p>
+<pre><code>#!/usr/bin/expect
+set ip [ lindex $argv 0 ]    #第一个位置参数
+set pass [ lindex $argv 1 ]    #第二个位置参数
+set timeout 5
+#开启一个程序
+spawn ssh root@10.1.1.1
+#捕获相关内容
+expect{
+    &quot;yes/no?&quot;:{send &quot;yes\r&quot;;exp_continue}
+    &quot;password&quot;:{send &quot;123456\r&quot;}
+}
+expect &quot;#&quot;
+send &quot;rm -rf /tmp/*\r&quot;
+send &quot;touch /tmp/test.log\r&quot;
+send &quot;date +%F&quot;
+expect eof</code></pre><p>案例三：<br>循环在指定主机上创建用户和文件(在shell脚本中使用expect)</p>
+<pre><code class="bash">&gt; <span class="built_in">read</span> ip pass &lt; 1.txt        从1.txt中读取内容到变量中，一次只能读取一行
+&gt; <span class="keyword">while</span> <span class="built_in">read</span> ip pass;<span class="keyword">do</span> <span class="built_in">echo</span> <span class="variable">$ip</span>;<span class="built_in">echo</span> <span class="variable">$pass</span>;<span class="keyword">done</span> &lt; 1.txt   读取1.txt的全部内容到变量中</code></pre>
+<p>代码：</p>
+<pre><code>#!/bin/bash
+while read ip pass
+do
+    /usr/bin/expect &lt;&lt;-END &amp;&gt;/dev/null
+    #开启一个程序
+    spawn ssh root@$ip
+    #捕获相关内容
+    expect{
+        &quot;yes/no?&quot;:{send &quot;yes\r&quot;;exp_continue}
+        &quot;password&quot;:{send &quot;$pass\r&quot;}
+    }
+    expect &quot;#&quot; { send &quot;useradd hyj;rm -r /tmp/test.log\r&quot; }
+    expect eof
+    END   #和前面的END呼应
+    echo &quot;$ip服务器上创建用户成功！&quot;
+done &lt; 1.txt    </code></pre><h6 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h6><blockquote>
+<p>数组分类：<br>普通数组：以整数作为数组的索引下标<br>关联数组：可以以字符串作为数组的索引下标<br> 数组的定义：<br>一次赋予一个值</p>
+</blockquote>
+<pre><code>数组名[索引下标]=值
+array[0]=av1
+array[1]=av2</code></pre><blockquote>
+<p>一次赋予多个值</p>
+</blockquote>
+<pre><code>数组名=(var1 var2 var3)
+array=(1 2 3 &quot;hello&quot; [8]=world)</code></pre><blockquote>
+<p>数组读取</p>
+</blockquote>
+<pre><code>${数组名[索引下标]}
+echo ${!array[@]} 获取数组元素的索引下标
+echo ${#array[*]} 获取所有元素的个数
+echo ${array[@]:1,2} 获取数组的从索引1 开始的后两个元素
+查看普通数组信息
+declare -a</code></pre><h2 id="运动"><a href="#运动" class="headerlink" title="运动"></a>运动</h2><blockquote>
+<p>跳绳1000<br>着实累呀，不知是否能有效果</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+	
+	<div>
+	  
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------我到底啦<i class="fa fa-paw"></i>谢谢您嘞-------------</div>
+    
+</div>
+	  
+	</div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/07/0407/" rel="next" title="今日学习内容">
+                <i class="fa fa-chevron-left"></i> 今日学习内容
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">江</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#工作"><span class="nav-number">1.</span> <span class="nav-text">工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自学"><span class="nav-number">2.</span> <span class="nav-text">自学</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#shift"><span class="nav-number">2.0.0.0.1.</span> <span class="nav-text">shift</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#expect"><span class="nav-number">2.0.0.0.2.</span> <span class="nav-text">expect</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#数组"><span class="nav-number">2.0.0.0.3.</span> <span class="nav-text">数组</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运动"><span class="nav-number">3.</span> <span class="nav-text">运动</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">江</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+
+  
+</body>
+</html>
