@@ -261,6 +261,732 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/13/JOB%E5%88%9B%E5%BB%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lakesayriver">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/13/JOB%E5%88%9B%E5%BB%BA/" itemprop="url">创建JOB</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-13T20:02:17+08:00">
+                2020-04-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/oracle/" itemprop="url" rel="index">
+                    <span itemprop="name">oracle</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Oracle之JOB学习"><a href="#Oracle之JOB学习" class="headerlink" title="Oracle之JOB学习"></a><center>Oracle之JOB学习</center></h2><hr></hr>
+
+
+<blockquote>
+<p>今天在工作中创建了一个JOB来定期清洗文件，总结下使用过程</p>
+</blockquote>
+<p>Oracle提供了两个包可以用来创建并管理JOB，分别是<font color="green">DBMS_JOB</font>和<font color="green">DBMS_SCHEDULER</font>,目前官方文档推荐使用DBMS_SCHEDULER，其功能更多</p>
+<h4 id="1-DBMS-JOB"><a href="#1-DBMS-JOB" class="headerlink" title="1. DBMS_JOB"></a><font color="yellow">1. DBMS_JOB</font></h4><h5 id="1-创建JOB"><a href="#1-创建JOB" class="headerlink" title="1) 创建JOB"></a><font color="blue">1) 创建JOB</font></h5><blockquote>
+<p>语法：</p>
+</blockquote>
+<pre><code>declare
+ jobno binary_integer;
+
+  begin
+   dbms_job.submit(job=&gt;jobno,
+   what=&gt;&#39;xxxx;&#39;,
+   next_date=&gt;xxxx,
+   interval=&gt;&#39;xxxx&#39;);
+   commit;
+end;</code></pre><blockquote>
+<p>示例：</p>
+</blockquote>
+<pre><code class="bash">VARIABLE jobno NUMBER;
+BEGIN
+DBMS_JOB.SUBMIT(
+    :jobno,                 ---定义job编号
+     &#39;INSERT INTO employees VALUES (7935, &#39;&#39;SALLY&#39;&#39;,
+     &#39;&#39;DOGAN&#39;&#39;, &#39;&#39;sally.dogan@xyzcorp.com&#39;&#39;, NULL, SYSDATE,          &#39;&#39;AD_PRES&#39;&#39;,  NULL, 
+     NULL, NULL, NULL);&#39;,   ---执行内容
+     SYSDATE,               ---下次执行时间
+     &#39;SYSDATE+1&#39;            ---执行间隔
+     );
+COMMIT;
+END;
+/</code></pre>
+<h5 id="2-修改JOB"><a href="#2-修改JOB" class="headerlink" title="2) 修改JOB"></a><font color="blue">2) 修改JOB</font></h5><pre><code>BEGIN
+DBMS_JOB.WHAT(
+        31, 
+        &#39;INSERT INTO employees VALUES (7935, &#39;&#39;TOM&#39;&#39;, &#39;&#39;DOGAN&#39;&#39;, 
+         &#39;&#39;tom.dogan@xyzcorp.com&#39;&#39;, NULL, SYSDATE,&#39;&#39;AD_PRES&#39;&#39;, NULL,
+         NULL, NULL, NULL);&#39;    ---修改插入的内容
+         );
+COMMIT;
+END;
+/
+</code></pre><h5 id="3-删除JOB"><a href="#3-删除JOB" class="headerlink" title="3) 删除JOB"></a><font color="blue">3) 删除JOB</font></h5><pre><code>BEGIN
+DBMS_JOB.REMOVE(14144);     ---传参为jobno
+COMMIT;
+END;
+/</code></pre><h4 id="2-DBMS-SCHEDULER"><a href="#2-DBMS-SCHEDULER" class="headerlink" title="2. DBMS_SCHEDULER"></a><font color="yellow">2. DBMS_SCHEDULER</font></h4><h5 id="1-创建JOB-1"><a href="#1-创建JOB-1" class="headerlink" title="1) 创建JOB"></a><font color="blue">1) 创建JOB</font></h5><blockquote>
+<p>语法：</p>
+</blockquote>
+<pre><code>BEGIN
+DBMS_SCHEDULER.CREATE_JOB(
+   job_name          =&gt;  &#39;job1&#39;,
+   job_type          =&gt;  &#39;PLSQL_BLOCK&#39;,
+   job_action        =&gt;  &#39;INSERT INTO employees VALUES (7935, &#39;&#39;SALLY&#39;&#39;,
+     &#39;&#39;DOGAN&#39;&#39;, &#39;&#39;sally.dogan@xyzcorp.com&#39;&#39;, NULL, SYSDATE,&#39;&#39;AD_PRES&#39;&#39;, NULL,
+      NULL, NULL, NULL);&#39;);
+   start_date        =&gt;  SYSDATE,
+   repeat_interval   =&gt;  &#39;FREQ = DAILY; INTERVAL = 1&#39;);
+END;
+/</code></pre><h5 id="2-修改JOB-1"><a href="#2-修改JOB-1" class="headerlink" title="2) 修改JOB"></a><font color="blue">2) 修改JOB</font></h5><pre><code>BEGIN
+DBMS_SCHEDULER.SET_ATTRIBUTE(
+   name          =&gt; &#39;JOB1&#39;,
+   attribute     =&gt; &#39;job_action&#39;,
+   value         =&gt; &#39;INSERT INTO employees VALUES (7935, &#39;&#39;TOM&#39;&#39;, &#39;&#39;DOGAN&#39;&#39;, 
+      &#39;&#39;tom.dogan@xyzcorp.com&#39;&#39;, NULL, SYSDATE, &#39;&#39;AD_PRES&#39;&#39;, NULL,
+      NULL, NULL, NULL);&#39;);
+END;
+/
+</code></pre><h5 id="3-删除JOB-1"><a href="#3-删除JOB-1" class="headerlink" title="3) 删除JOB"></a><font color="blue">3) 删除JOB</font></h5><pre><code>BEGIN
+   DBMS_SCHEDULER.DROP_JOB(&#39;myjob1&#39;);
+END;
+/</code></pre><hr></hr>
+上述内容着重点是对比DBMS_JOB和DBMS_SCHEDULER在创建、修改、删除JOB时的区别，下面记录下今天写的清洗JOB的过程
+
+
+<blockquote>
+<p>三种用法：</p>
+</blockquote>
+<ol>
+<li>自动执行程序:<pre><code>BEGIN
+DBMS_SCHEDULER.CREATE_JOB (
+job_name          =&gt;  &#39;my_new_job1&#39;,
+program_name      =&gt;  &#39;my_saved_program&#39;, 
+repeat_interval   =&gt;  &#39;FREQ=DAILY;BYHOUR=12&#39;,
+comments          =&gt;  &#39;Daily at noon&#39;);
+END;
+/</code></pre></li>
+<li>自动执行计划<pre><code>BEGIN
+DBMS_SCHEDULER.CREATE_JOB (
+job_name                 =&gt;  &#39;my_new_job2&#39;, 
+job_type                 =&gt;  &#39;PLSQL_BLOCK&#39;,
+job_action               =&gt;  &#39;BEGIN SALES_PKG.UPDATE_SALES_SUMMARY; END;&#39;,
+schedule_name            =&gt;  &#39;my_saved_schedule&#39;);
+END;
+/</code></pre></li>
+<li>自动执行程序和计划<pre><code>BEGIN
+DBMS_SCHEDULER.CREATE_JOB (
+job_name            =&gt;  &#39;my_new_job3&#39;, 
+program_name        =&gt;  &#39;my_saved_program1&#39;, 
+schedule_name       =&gt;  &#39;my_saved_schedule1&#39;);
+END;
+/</code></pre><blockquote>
+<p>案例</p>
+</blockquote>
+<pre><code>BEGIN
+DBMS_SCHEDULER.CREATE_JOB (
+job_name          =&gt;  &#39;TRAN_LAWFILES_JOB&#39;,
+program_name      =&gt;  &#39;PRO_TRAN_LAWFILES&#39;, 
+repeat_interval   =&gt;  &#39;FREQ=MINUTELY;INTERVAL=5&#39;,
+comments          =&gt;  &#39;定时清洗资讯中心文件内容&#39;);
+END;</code></pre><blockquote>
+<p>上面语句执行没问题，但是ENABLED=false，auto_drop=true</p>
+</blockquote>
+<pre><code>BEGIN
+DBMS_SCHEDULER.CREATE_JOB (
+job_name          =&gt;  &#39;TRAN_LAWFILES_JOB&#39;,
+program_name      =&gt;  &#39;PRO_TRAN_LAWFILES&#39;, 
+repeat_interval   =&gt;  &#39;FREQ=MINUTELY;INTERVAL=5&#39;,
+comments          =&gt;  &#39;定时清洗资讯中心文件内容&#39;,
+AUTO_DROP         =&gt; FALSE,
+ENABLED           =&gt; TRUE);
+END;</code></pre><blockquote>
+<p>执行报错“PRO_TRAN_LAWFILES必须为program”，没搞懂为什么<br>改成：</p>
+</blockquote>
+<pre><code>BEGIN
+DBMS_SCHEDULER.CREATE_JOB (
+job_name           =&gt;  &#39;TRAN_LAWFILES_JOB&#39;,
+job_type           =&gt;  &#39;PLSQL_BLOCK&#39;,
+job_action         =&gt;  &#39;DECLARE O_NOTE VARCHAR2(200);O_CODE NUMBER(2);BEGIN PRO_TRAN_LAWFILES(O_CODE,O_NOTE);END;&#39;,
+repeat_interval    =&gt;  &#39;FREQ=MINUTELY;INTERVAL=5&#39;, 
+auto_drop         =&gt; false,
+ENABLED            =&gt;  true,
+comments           =&gt;  &#39;定时清洗资讯中心文件内容&#39;);
+END;</code></pre><blockquote>
+<p>创建成功，查询创建的信息</p>
+</blockquote>
+<pre><code>select * from user_SCHEDULER_JOBS</code></pre><blockquote>
+<p>启动job</p>
+</blockquote>
+<pre><code>begin
+ dbms_scheduler.run_job(job_name=&gt;&#39;jobname&#39;);
+end;
+/</code></pre><blockquote>
+<p>停止job</p>
+</blockquote>
+<pre><code>BEGIN
+DBMS_SCHEDULER.STOP_JOB(&#39;job1, sys.dw_jobs&#39;);
+END;
+/</code></pre></li>
+</ol>
+<p><font color="red">小结</font></p>
+<blockquote>
+<p>DBMS_SCHEDULER对JOB的管理内容更加丰富，比较全面和细致，而DBMS_JOB的管理属性就要少很多，而且从官方的文档介绍来看，都不愿意过多介绍DBMS_JOB，要么就是内容少，要么就是官方都不愿意多提。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+	
+	<div>
+	  
+	</div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/13/0413/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lakesayriver">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/13/0413/" itemprop="url">case</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-13T10:04:05+08:00">
+                2020-04-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/shell/" itemprop="url" rel="index">
+                    <span itemprop="name">shell</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>想至千里，想成江河！</p>
+<h2 id="case"><a href="#case" class="headerlink" title="case"></a>case</h2><blockquote>
+<p>多重筛选</p>
+</blockquote>
+<ol>
+<li>语法结构<pre><code class="bash">ps: pattern 需要匹配的模式
+</code></pre>
+</li>
+</ol>
+<p>case var in<br>pattern1)    模式1;用|分割多个模式，相当于or<br>    command1<br>    ;;        两个分号代表命令结束<br>pattern2)<br>    command2<br>    ;;<br>    *)<br>    command3<br>    ;;<br>esac</p>
+<pre><code>2. 案例
+&gt; 输入不同的传参执行不同的命令
+```bash 
+#!/bin/bash
+case $1 in
+name|N)
+    echo &quot;my name is lakesayriver&quot;
+    ;;
+favorite|F)
+    echo &quot;I like watching movies&quot;
+    ;;
+*)
+    echo &quot;hello! I really like you so much&quot;
+    ;;
+esac</code></pre><blockquote>
+<p>根据用户的需求执行命令<br><br><font color="red">tips:</font> set list 可以查看脚本的格式，比如制表符，空格等</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>需求如下</p>
+</blockquote>
+</blockquote>
+<pre><code>h    显示命令帮助
+f    显示磁盘分区
+d    显示磁盘挂载
+m    查看内存使用
+u    查询系统负载
+q    退出程序
+
+#!/bin/bash
+#打印菜单,&#39;&lt;&lt;-&#39;表示后面的END不用靠墙
+cat &lt;&lt;-END
+    h    显示命令帮助
+    f    显示磁盘分区
+    d    显示磁盘挂载
+    m    查看内存使用
+    u    查询系统负载
+    q    退出程序
+    END
+while true
+do
+#用户选择菜单
+read -p &quot;请选择要操作的菜单（help h）:&quot; action
+case $action in
+h|help)
+    cat &lt;&lt;-END
+        h    显示命令帮助
+        f    显示磁盘分区
+        d    显示磁盘挂载
+        m    查看内存使用
+        u    查询系统负载
+        q    退出程序
+        END
+    ;;
+f)
+    lsblk
+    ;;
+d)
+    df -h
+    ;;
+m)
+    free -m
+    ;;
+u)
+    uptime
+    ;;
+q)
+    exit
+    ;;
+esac
+done</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+	
+	<div>
+	  
+	</div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/09/0409/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lakesayriver">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/09/0409/" itemprop="url">关联数组</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-09T20:47:32+08:00">
+                2020-04-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/shell/" itemprop="url" rel="index">
+                    <span itemprop="name">shell</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>想至千里，想成江河！</p>
+<h2 id="关联数组定义-获取"><a href="#关联数组定义-获取" class="headerlink" title="关联数组定义+获取"></a>关联数组定义+获取</h2><blockquote>
+<p>关联数组的索引下标可以是字符串</p>
+</blockquote>
+<ol>
+<li>声明关联数组<pre><code class="bash">declare -A asso_array1
+declare -A asso_array2
+declare -A asso_array3</code></pre>
+</li>
+<li>赋值<blockquote>
+<p>一次赋一个值</p>
+</blockquote>
+<pre><code>数组名[索引/下标]=变量值
+asso_array1[linux]=frist
+asso_array1[java]=second
+asso_array1[python]=third</code></pre><blockquote>
+<p>一次赋多个值</p>
+</blockquote>
+<pre><code>数组名=([下标/索引]=变量1 [下标/索引]=变量2)
+asso_array2=([linux]=frist [java]=second [python]=third [name]=&#39;whatup&#39;)</code></pre><blockquote>
+<p>其他赋值方式，通过运算得到</p>
+</blockquote>
+<pre><code>let 数组名[下标或索引]++</code></pre><h2 id="其他变量定义"><a href="#其他变量定义" class="headerlink" title="其他变量定义"></a>其他变量定义</h2></li>
+<li>取出一个目录下的目录和文件：dirname 目录 和 basename 目录</li>
+<li>变量内容的删除和替换<blockquote>
+<p>%表示从右往左去掉一个/key/<br>%%表示从右往左去掉最大长度<br>“#”表示从左往右去掉一个<br>“##”表示从左往右去掉最大</p>
+</blockquote>
+<pre><code class="bash">url=lakesayriver.github.io
+echo ${#url}    #url的长度
+echo ${url#.}    #.表示标志位
+github.io
+echo ${url##.}
+io
+echo ${url%.}
+lakesayriver.github
+echo ${url%%.}
+lakesayriver</code></pre>
+<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3>统计web服务的不同状态的连接个数<blockquote>
+<p>查看网站连接状态的命令 ss -natp|grep :80<br>循环计算不同状态 </p>
+</blockquote>
+<pre><code class="bash">#!/bin/bash
+declare -A array
+state=`ss -natp|grep :80|cut -d&#39; &#39; -f1`
+for i in $state
+do
+ let array[$i]++
+done
+#打印各个状态的连接数
+for j in ${!array[@]}
+do
+ echo $j:$array[$j]
+done</code></pre>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+	
+	<div>
+	  
+	</div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/08/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1456,7 +2182,7 @@ $ passwd 123456 --stdin username  设置密码</code></pre>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1467,7 +2193,7 @@ $ passwd 123456 --stdin username  设置密码</code></pre>
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

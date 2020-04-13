@@ -79,14 +79,14 @@
 
 
 
-<meta name="description" content="title: 工具网站记录categories: tool  图标网站https:&#x2F;&#x2F;www.easyicon.net&#x2F;http:&#x2F;&#x2F;www.bitbug.net&#x2F;https:&#x2F;&#x2F;www.iconfont.cn&#x2F;plus&#x2F;user&#x2F;detail?uid&#x3D;41718">
+<meta name="description" content="Oracle之JOB学习    今天在工作中创建了一个JOB来定期清洗文件，总结下使用过程  Oracle提供了两个包可以用来创建并管理JOB，分别是DBMS_JOB和DBMS_SCHEDULER,目前官方文档推荐使用DBMS_SCHEDULER，其功能更多 1. DBMS_JOB1) 创建JOB 语法：  declare  jobno binary_integer;    begin    db">
 <meta property="og:type" content="article">
-<meta property="og:title" content="实用工具">
-<meta property="og:url" content="http://yoursite.com/2020/04/08/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/index.html">
+<meta property="og:title" content="创建JOB">
+<meta property="og:url" content="http://yoursite.com/2020/04/13/JOB%E5%88%9B%E5%BB%BA/index.html">
 <meta property="og:site_name" content="lakesayriver">
-<meta property="og:description" content="title: 工具网站记录categories: tool  图标网站https:&#x2F;&#x2F;www.easyicon.net&#x2F;http:&#x2F;&#x2F;www.bitbug.net&#x2F;https:&#x2F;&#x2F;www.iconfont.cn&#x2F;plus&#x2F;user&#x2F;detail?uid&#x3D;41718">
-<meta property="article:published_time" content="2020-04-08T14:06:46.650Z">
-<meta property="article:modified_time" content="2020-04-08T14:10:18.883Z">
+<meta property="og:description" content="Oracle之JOB学习    今天在工作中创建了一个JOB来定期清洗文件，总结下使用过程  Oracle提供了两个包可以用来创建并管理JOB，分别是DBMS_JOB和DBMS_SCHEDULER,目前官方文档推荐使用DBMS_SCHEDULER，其功能更多 1. DBMS_JOB1) 创建JOB 语法：  declare  jobno binary_integer;    begin    db">
+<meta property="article:published_time" content="2020-04-13T12:02:17.256Z">
+<meta property="article:modified_time" content="2020-04-13T13:04:56.411Z">
 <meta property="article:author" content="江">
 <meta name="twitter:card" content="summary">
 
@@ -118,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/04/08/实用工具/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/04/13/JOB创建/"/>
 
 
 
 
 
-  <title>实用工具 | lakesayriver</title>
+  <title>创建JOB | lakesayriver</title>
   
 
 
@@ -264,7 +264,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/08/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/13/JOB%E5%88%9B%E5%BB%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江">
@@ -281,7 +281,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">实用工具</h1>
+          <h1 class="post-title" itemprop="name headline">创建JOB</h1>
         
 
         <div class="post-meta">
@@ -293,8 +293,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-08T22:06:46+08:00">
-                2020-04-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-13T20:02:17+08:00">
+                2020-04-13
               </time>
             
 
@@ -303,6 +303,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/oracle/" itemprop="url" rel="index">
+                    <span itemprop="name">oracle</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -331,10 +353,163 @@
       
 
       
-        <hr>
-<p>title: 工具网站记录<br>categories: tool</p>
-<hr>
-<h3 id="图标网站"><a href="#图标网站" class="headerlink" title="图标网站"></a>图标网站</h3><p><a href="https://www.easyicon.net/" target="_blank" rel="noopener">https://www.easyicon.net/</a><br><a href="http://www.bitbug.net/" target="_blank" rel="noopener">http://www.bitbug.net/</a><br><a href="https://www.iconfont.cn/plus/user/detail?uid=41718" target="_blank" rel="noopener">https://www.iconfont.cn/plus/user/detail?uid=41718</a></p>
+        <h2 id="Oracle之JOB学习"><a href="#Oracle之JOB学习" class="headerlink" title="Oracle之JOB学习"></a><center>Oracle之JOB学习</center></h2><hr></hr>
+
+
+<blockquote>
+<p>今天在工作中创建了一个JOB来定期清洗文件，总结下使用过程</p>
+</blockquote>
+<p>Oracle提供了两个包可以用来创建并管理JOB，分别是<font color="green">DBMS_JOB</font>和<font color="green">DBMS_SCHEDULER</font>,目前官方文档推荐使用DBMS_SCHEDULER，其功能更多</p>
+<h4 id="1-DBMS-JOB"><a href="#1-DBMS-JOB" class="headerlink" title="1. DBMS_JOB"></a><font color="yellow">1. DBMS_JOB</font></h4><h5 id="1-创建JOB"><a href="#1-创建JOB" class="headerlink" title="1) 创建JOB"></a><font color="blue">1) 创建JOB</font></h5><blockquote>
+<p>语法：</p>
+</blockquote>
+<pre><code>declare
+ jobno binary_integer;
+
+  begin
+   dbms_job.submit(job=&gt;jobno,
+   what=&gt;&#39;xxxx;&#39;,
+   next_date=&gt;xxxx,
+   interval=&gt;&#39;xxxx&#39;);
+   commit;
+end;</code></pre><blockquote>
+<p>示例：</p>
+</blockquote>
+<pre><code class="bash">VARIABLE jobno NUMBER;
+BEGIN
+DBMS_JOB.SUBMIT(
+    :jobno,                 ---定义job编号
+     &#39;INSERT INTO employees VALUES (7935, &#39;&#39;SALLY&#39;&#39;,
+     &#39;&#39;DOGAN&#39;&#39;, &#39;&#39;sally.dogan@xyzcorp.com&#39;&#39;, NULL, SYSDATE,          &#39;&#39;AD_PRES&#39;&#39;,  NULL, 
+     NULL, NULL, NULL);&#39;,   ---执行内容
+     SYSDATE,               ---下次执行时间
+     &#39;SYSDATE+1&#39;            ---执行间隔
+     );
+COMMIT;
+END;
+/</code></pre>
+<h5 id="2-修改JOB"><a href="#2-修改JOB" class="headerlink" title="2) 修改JOB"></a><font color="blue">2) 修改JOB</font></h5><pre><code>BEGIN
+DBMS_JOB.WHAT(
+        31, 
+        &#39;INSERT INTO employees VALUES (7935, &#39;&#39;TOM&#39;&#39;, &#39;&#39;DOGAN&#39;&#39;, 
+         &#39;&#39;tom.dogan@xyzcorp.com&#39;&#39;, NULL, SYSDATE,&#39;&#39;AD_PRES&#39;&#39;, NULL,
+         NULL, NULL, NULL);&#39;    ---修改插入的内容
+         );
+COMMIT;
+END;
+/
+</code></pre><h5 id="3-删除JOB"><a href="#3-删除JOB" class="headerlink" title="3) 删除JOB"></a><font color="blue">3) 删除JOB</font></h5><pre><code>BEGIN
+DBMS_JOB.REMOVE(14144);     ---传参为jobno
+COMMIT;
+END;
+/</code></pre><h4 id="2-DBMS-SCHEDULER"><a href="#2-DBMS-SCHEDULER" class="headerlink" title="2. DBMS_SCHEDULER"></a><font color="yellow">2. DBMS_SCHEDULER</font></h4><h5 id="1-创建JOB-1"><a href="#1-创建JOB-1" class="headerlink" title="1) 创建JOB"></a><font color="blue">1) 创建JOB</font></h5><blockquote>
+<p>语法：</p>
+</blockquote>
+<pre><code>BEGIN
+DBMS_SCHEDULER.CREATE_JOB(
+   job_name          =&gt;  &#39;job1&#39;,
+   job_type          =&gt;  &#39;PLSQL_BLOCK&#39;,
+   job_action        =&gt;  &#39;INSERT INTO employees VALUES (7935, &#39;&#39;SALLY&#39;&#39;,
+     &#39;&#39;DOGAN&#39;&#39;, &#39;&#39;sally.dogan@xyzcorp.com&#39;&#39;, NULL, SYSDATE,&#39;&#39;AD_PRES&#39;&#39;, NULL,
+      NULL, NULL, NULL);&#39;);
+   start_date        =&gt;  SYSDATE,
+   repeat_interval   =&gt;  &#39;FREQ = DAILY; INTERVAL = 1&#39;);
+END;
+/</code></pre><h5 id="2-修改JOB-1"><a href="#2-修改JOB-1" class="headerlink" title="2) 修改JOB"></a><font color="blue">2) 修改JOB</font></h5><pre><code>BEGIN
+DBMS_SCHEDULER.SET_ATTRIBUTE(
+   name          =&gt; &#39;JOB1&#39;,
+   attribute     =&gt; &#39;job_action&#39;,
+   value         =&gt; &#39;INSERT INTO employees VALUES (7935, &#39;&#39;TOM&#39;&#39;, &#39;&#39;DOGAN&#39;&#39;, 
+      &#39;&#39;tom.dogan@xyzcorp.com&#39;&#39;, NULL, SYSDATE, &#39;&#39;AD_PRES&#39;&#39;, NULL,
+      NULL, NULL, NULL);&#39;);
+END;
+/
+</code></pre><h5 id="3-删除JOB-1"><a href="#3-删除JOB-1" class="headerlink" title="3) 删除JOB"></a><font color="blue">3) 删除JOB</font></h5><pre><code>BEGIN
+   DBMS_SCHEDULER.DROP_JOB(&#39;myjob1&#39;);
+END;
+/</code></pre><hr></hr>
+上述内容着重点是对比DBMS_JOB和DBMS_SCHEDULER在创建、修改、删除JOB时的区别，下面记录下今天写的清洗JOB的过程
+
+
+<blockquote>
+<p>三种用法：</p>
+</blockquote>
+<ol>
+<li>自动执行程序:<pre><code>BEGIN
+DBMS_SCHEDULER.CREATE_JOB (
+job_name          =&gt;  &#39;my_new_job1&#39;,
+program_name      =&gt;  &#39;my_saved_program&#39;, 
+repeat_interval   =&gt;  &#39;FREQ=DAILY;BYHOUR=12&#39;,
+comments          =&gt;  &#39;Daily at noon&#39;);
+END;
+/</code></pre></li>
+<li>自动执行计划<pre><code>BEGIN
+DBMS_SCHEDULER.CREATE_JOB (
+job_name                 =&gt;  &#39;my_new_job2&#39;, 
+job_type                 =&gt;  &#39;PLSQL_BLOCK&#39;,
+job_action               =&gt;  &#39;BEGIN SALES_PKG.UPDATE_SALES_SUMMARY; END;&#39;,
+schedule_name            =&gt;  &#39;my_saved_schedule&#39;);
+END;
+/</code></pre></li>
+<li>自动执行程序和计划<pre><code>BEGIN
+DBMS_SCHEDULER.CREATE_JOB (
+job_name            =&gt;  &#39;my_new_job3&#39;, 
+program_name        =&gt;  &#39;my_saved_program1&#39;, 
+schedule_name       =&gt;  &#39;my_saved_schedule1&#39;);
+END;
+/</code></pre><blockquote>
+<p>案例</p>
+</blockquote>
+<pre><code>BEGIN
+DBMS_SCHEDULER.CREATE_JOB (
+job_name          =&gt;  &#39;TRAN_LAWFILES_JOB&#39;,
+program_name      =&gt;  &#39;PRO_TRAN_LAWFILES&#39;, 
+repeat_interval   =&gt;  &#39;FREQ=MINUTELY;INTERVAL=5&#39;,
+comments          =&gt;  &#39;定时清洗资讯中心文件内容&#39;);
+END;</code></pre><blockquote>
+<p>上面语句执行没问题，但是ENABLED=false，auto_drop=true</p>
+</blockquote>
+<pre><code>BEGIN
+DBMS_SCHEDULER.CREATE_JOB (
+job_name          =&gt;  &#39;TRAN_LAWFILES_JOB&#39;,
+program_name      =&gt;  &#39;PRO_TRAN_LAWFILES&#39;, 
+repeat_interval   =&gt;  &#39;FREQ=MINUTELY;INTERVAL=5&#39;,
+comments          =&gt;  &#39;定时清洗资讯中心文件内容&#39;,
+AUTO_DROP         =&gt; FALSE,
+ENABLED           =&gt; TRUE);
+END;</code></pre><blockquote>
+<p>执行报错“PRO_TRAN_LAWFILES必须为program”，没搞懂为什么<br>改成：</p>
+</blockquote>
+<pre><code>BEGIN
+DBMS_SCHEDULER.CREATE_JOB (
+job_name           =&gt;  &#39;TRAN_LAWFILES_JOB&#39;,
+job_type           =&gt;  &#39;PLSQL_BLOCK&#39;,
+job_action         =&gt;  &#39;DECLARE O_NOTE VARCHAR2(200);O_CODE NUMBER(2);BEGIN PRO_TRAN_LAWFILES(O_CODE,O_NOTE);END;&#39;,
+repeat_interval    =&gt;  &#39;FREQ=MINUTELY;INTERVAL=5&#39;, 
+auto_drop         =&gt; false,
+ENABLED            =&gt;  true,
+comments           =&gt;  &#39;定时清洗资讯中心文件内容&#39;);
+END;</code></pre><blockquote>
+<p>创建成功，查询创建的信息</p>
+</blockquote>
+<pre><code>select * from user_SCHEDULER_JOBS</code></pre><blockquote>
+<p>启动job</p>
+</blockquote>
+<pre><code>begin
+ dbms_scheduler.run_job(job_name=&gt;&#39;jobname&#39;);
+end;
+/</code></pre><blockquote>
+<p>停止job</p>
+</blockquote>
+<pre><code>BEGIN
+DBMS_SCHEDULER.STOP_JOB(&#39;job1, sys.dw_jobs&#39;);
+END;
+/</code></pre></li>
+</ol>
+<p><font color="red">小结</font></p>
+<blockquote>
+<p>DBMS_SCHEDULER对JOB的管理内容更加丰富，比较全面和细致，而DBMS_JOB的管理属性就要少很多，而且从官方的文档介绍来看，都不愿意过多介绍DBMS_JOB，要么就是内容少，要么就是官方都不愿意多提。</p>
+</blockquote>
 
       
     </div>
@@ -369,8 +544,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/08/0408/" rel="next" title="今日学习内容">
-                <i class="fa fa-chevron-left"></i> 今日学习内容
+              <a href="/2020/04/13/0413/" rel="next" title="case">
+                <i class="fa fa-chevron-left"></i> case
               </a>
             
           </div>
@@ -378,10 +553,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/04/09/0409/" rel="prev" title="关联数组">
-                关联数组 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -508,7 +679,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#图标网站"><span class="nav-number">1.</span> <span class="nav-text">图标网站</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Oracle之JOB学习"><span class="nav-number">1.</span> <span class="nav-text">Oracle之JOB学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-DBMS-JOB"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. DBMS_JOB</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-创建JOB"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">1) 创建JOB</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-修改JOB"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">2) 修改JOB</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-删除JOB"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">3) 删除JOB</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-DBMS-SCHEDULER"><span class="nav-number">1.0.2.</span> <span class="nav-text">2. DBMS_SCHEDULER</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-创建JOB-1"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">1) 创建JOB</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-修改JOB-1"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">2) 修改JOB</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-删除JOB-1"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">3) 删除JOB</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
